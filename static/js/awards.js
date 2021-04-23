@@ -3,10 +3,24 @@ let resizeReset = function() {
 	h = canvasBody.height = window.innerHeight;
 }
 
+var wid = window.innerWidth;
+var particleAmount = null;
+
+if (wid>1200){
+	particleAmount= 70;
+} else if(wid>1000){
+	particleAmount= 50;
+} else if(wid>900){
+	particleAmount= 40;
+} else if(wid>=800){
+	particleAmount= 30;
+} else if(wid<800){
+	particleAmount= 20;
+}
+
 const opts = {
 	particleColor: "rgb(200,200,200)",
 	lineColor: "rgb(200,200,200)",
-	particleAmount: 70,
 	defaultSpeed: 1,
 	variantSpeed: 1,
 	defaultRadius: 2,
@@ -85,7 +99,7 @@ Particle = function(xPos, yPos){
 function setup(){
 	particles = [];
 	resizeReset();
-	for (let i = 0; i < opts.particleAmount; i++){
+	for (let i = 0; i < particleAmount; i++){
 		particles.push( new Particle() );
 	}
 	window.requestAnimationFrame(loop);

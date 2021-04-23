@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login
 from marketing.models import Company
 from django.core import serializers
 from django.http import JsonResponse
+import retailcrm
+import json
 
 def index(request):
 
@@ -29,6 +31,7 @@ def sign_in(request):
 
 def office(request):
     if request.user.is_authenticated:
+
         company = Company.objects.all()
         context={
             'company': company
